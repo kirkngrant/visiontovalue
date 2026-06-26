@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>V2V Technology Consulting — Vision to Value</title>
+  <meta name="description" content="V2V Technology Consulting stabilizes complex technology programs for Fortune 500 organizations. Program Turnaround-as-a-Service for $10M–$500M initiatives.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080F1C;
+      --bg2:       #0D1A30;
+      --bg3:       #112040;
+      --border:    #1A3050;
+      --border2:   #254570;
+      --teal:      #00C48C;
+      --teal-dim:  #008F65;
+      --blue:      #4A8FD4;
+      --text:      #C8D8EA;
+      --text-muted:#6B8BAD;
+      --text-dim:  #3A5570;
+      --white:     #EDF3F9;
+      --serif:     'Playfair Display', Georgia, serif;
+      --sans:      'Inter', system-ui, sans-serif;
+      --max:       1100px;
+      --r:         6px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,15,28,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .nav-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 2rem;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .nav-mark {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3px;
+      width: 28px;
+      height: 28px;
+    }
+    .nav-mark span {
+      border-radius: 2px;
+    }
+    .nav-mark span:nth-child(1) { background: var(--teal); }
+    .nav-mark span:nth-child(2) { background: var(--blue); opacity: 0.75; }
+    .nav-mark span:nth-child(3) { background: var(--blue); opacity: 0.55; }
+    .nav-mark span:nth-child(4) { background: var(--teal); opacity: 0.4; }
+    .nav-wordmark {
+      font-family: var(--sans);
+      font-weight: 600;
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      color: var(--white);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.02em;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--bg) !important;
+      background: var(--teal);
+      padding: 8px 20px;
+      border-radius: var(--r);
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .nav-cta:hover {
+      background: #00A878 !important;
+      color: var(--bg) !important;
+      transform: translateY(-1px);
+    }
+
+    /* ── TICKER ── */
+    .ticker-wrap {
+      background: var(--bg2);
+      border-bottom: 0.5px solid var(--border);
+      overflow: hidden;
+      height: 36px;
+      display: flex;
+      align-items: center;
+    }
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      white-space: nowrap;
+      animation: ticker 40s linear infinite;
+    }
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0 2.5rem;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      border-right: 0.5px solid var(--border);
+    }
+    .ticker-num {
+      font-weight: 600;
+      color: var(--teal);
+    }
+    .ticker-desc {
+      color: var(--text-muted);
+    }
+    .ticker-dot {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--border2);
+      flex-shrink: 0;
+    }
+
+    /* ── TICKER EXTRAS ── */
+    .ticker-divider {
+      gap: 16px !important;
+      padding: 0 3rem !important;
+    }
+    .ticker-rule {
+      display: inline-block;
+      width: 32px;
+      height: 0.5px;
+      background: var(--border2);
+      flex-shrink: 0;
+      align-self: center;
+    }
+    .ticker-label {
+      font-size: 11px;
+      font-style: italic;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+    }
+
+    /* ── BACKGROUND GRAPHIC ── */
+    .bg-graphic {
+      position: fixed;
+      top: 50%;
+      right: -40px;
+      transform: translateY(-50%);
+      width: 520px;
+      height: 520px;
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.18;
+    }
+    .bg-graphic svg { width: 100%; height: 100%; }
+    nav, .ticker-wrap, #top, .crisis-bg, #services, #process, .about-bg, .cta-strip, footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 7rem 2rem 6rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .hero-left { }
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.75rem;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 1px;
+      background: var(--teal);
+    }
+    .hero-headline {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 5vw, 3.8rem);
+      font-weight: 500;
+      line-height: 1.15;
+      color: var(--white);
+      max-width: 700px;
+      margin-bottom: 1.5rem;
+      letter-spacing: -0.01em;
+    }
+    .hero-headline em {
+      font-style: italic;
+      color: var(--teal);
+    }
+    .hero-sub {
+      font-size: 17px;
+      color: var(--text-muted);
+      max-width: 520px;
+      line-height: 1.7;
+      margin-bottom: 2.5rem;
+      font-weight: 300;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--teal);
+      color: var(--bg);
+      font-size: 14px;
+      font-weight: 600;
+      padding: 13px 26px;
+      border-radius: var(--r);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover {
+      background: #00A878;
+      transform: translateY(-1px);
+    }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 0.5px solid var(--border2);
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 400;
+      padding: 13px 26px;
+      border-radius: var(--r);
+      text-decoration: none;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .btn-secondary:hover {
+      border-color: var(--text-muted);
+      color: var(--white);
+    }
+    .arrow {
+      display: inline-block;
+      font-style: normal;
+      transition: transform 0.2s;
+    }
+    .btn-primary:hover .arrow,
+    .btn-secondary:hover .arrow { transform: translateX(3px); }
+
+    /* ── HERO STATS ── */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border: 0.5px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      max-width: 640px;
+    }
+    .stat {
+      padding: 1.5rem 1.75rem;
+      border-right: 0.5px solid var(--border);
+      background: var(--bg2);
+    }
+    .stat:last-child { border-right: none; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2rem;
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+
+    /* ── SECTION SHARED ── */
+    .section {
+      padding: 5rem 2rem;
+      max-width: var(--max);
+      margin: 0 auto;
+    }
+    .section-divider {
+      border: none;
+      border-top: 0.5px solid var(--border);
+      margin: 0 2rem;
+    }
+    .eyebrow {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1rem;
+    }
+    .section-headline {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .section-sub {
+      font-size: 16px;
+      color: var(--text-muted);
+      max-width: 560px;
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    /* ── CRISIS SECTION ── */
+    .crisis-bg {
+      background: var(--bg2);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .crisis-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 4rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .crisis-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+      border: 0.5px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .crisis-stat {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 0.5px solid var(--border);
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+    }
+    .crisis-stat:last-child { border-bottom: none; }
+    .crisis-big {
+      font-family: var(--serif);
+      font-size: 2.4rem;
+      font-weight: 600;
+      color: var(--teal);
+      line-height: 1;
+      flex-shrink: 0;
+      min-width: 100px;
+    }
+    .crisis-text {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .crisis-copy { }
+    .crisis-copy .section-headline { margin-bottom: 1.25rem; }
+    .crisis-copy p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.75;
+      font-weight: 300;
+      margin-bottom: 1rem;
+    }
+    .crisis-copy p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── SERVICE CARD ── */
+    .service-card {
+      background: var(--bg2);
+      border: 0.5px solid var(--border);
+      border-radius: var(--r);
+      padding: 2.5rem;
+      margin-top: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .service-name {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 0.75rem;
+    }
+    .service-desc {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      font-weight: 300;
+      margin-bottom: 1.5rem;
+    }
+    .service-price {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,196,140,0.08);
+      border: 0.5px solid rgba(0,196,140,0.25);
+      color: var(--teal);
+      font-size: 13px;
+      font-weight: 500;
+      padding: 6px 14px;
+      border-radius: var(--r);
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+    .signal-list {
+      list-style: none;
+    }
+    .signal-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+      padding: 8px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .signal-list li:last-child { border-bottom: none; }
+    .signal-list li::before {
+      content: '—';
+      color: var(--border2);
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .signal-list li strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── PROCESS ── */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 0.5px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-top: 3rem;
+    }
+    .process-step {
+      background: var(--bg2);
+      padding: 2rem;
+    }
+    .step-num {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      color: var(--teal);
+      margin-bottom: 0.75rem;
+    }
+    .step-name {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+    .step-desc {
+      font-size: 13px;
+      color: var(--text-muted);
+      line-height: 1.6;
+      font-weight: 300;
+    }
+
+    /* ── ABOUT ── */
+    .about-bg {
+      background: var(--bg2);
+      border-top: 0.5px solid var(--border);
+      border-bottom: 0.5px solid var(--border);
+    }
+    .about-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 5rem 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-left .section-headline { margin-bottom: 1.5rem; }
+    .about-creds {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .cred {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 13px;
+      color: var(--text-muted);
+      padding: 10px 0;
+      border-bottom: 0.5px solid var(--border);
+    }
+    .cred:last-child { border-bottom: none; }
+    .cred-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+    .about-right p {
+      font-size: 15px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      font-weight: 300;
+      margin-bottom: 1.25rem;
+    }
+    .about-right p strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── CTA STRIP ── */
+    .cta-strip {
+      padding: 6rem 2rem;
+      max-width: var(--max);
+      margin: 0 auto;
+      text-align: center;
+    }
+    .cta-strip .section-headline {
+      margin: 0 auto 1rem;
+      max-width: 540px;
+    }
+    .cta-strip .section-sub {
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+    .cta-strip .hero-ctas { justify-content: center; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 0.5px solid var(--border);
+      background: var(--bg2);
+    }
+    .footer-inner {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 2.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+    .footer-brand .nav-mark { width: 22px; height: 22px; gap: 2px; }
+    .footer-brand .nav-mark span { border-radius: 1.5px; }
+    .footer-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text-muted);
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      list-style: none;
+    }
+    .footer-links a {
+      font-size: 12px;
+      color: var(--text-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover { color: var(--text-muted); }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links li:not(:last-child) { display: none; }
+      .hero { padding: 4rem 1.25rem 3.5rem; }
+      .bg-graphic { display: none; }
+      .hero-stats { grid-template-columns: 1fr; max-width: 100%; }
+      .stat { border-right: none; border-bottom: 0.5px solid var(--border); }
+      .stat:last-child { border-bottom: none; }
+      .crisis-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .service-card { grid-template-columns: 1fr; gap: 2rem; }
+      .process-steps { grid-template-columns: 1fr; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-inner { flex-direction: column; gap: 1rem; text-align: center; }
+      .section { padding: 3.5rem 1.25rem; }
+    }
+
+    /* ── MOTION ── */
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track { animation: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── BACKGROUND GRAPHIC (fixed, behind all content) ── -->
+<div class="bg-graphic" aria-hidden="true">
+  <svg viewBox="0 0 400 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <radialGradient id="glow-teal" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#00C48C" stop-opacity="0.18"/>
+        <stop offset="100%" stop-color="#00C48C" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="glow-blue" cx="50%" cy="50%" r="50%">
+        <stop offset="0%" stop-color="#4A8FD4" stop-opacity="0.14"/>
+        <stop offset="100%" stop-color="#4A8FD4" stop-opacity="0"/>
+      </radialGradient>
+    </defs>
+
+    <!-- Ambient glow -->
+    <ellipse cx="200" cy="200" rx="160" ry="140" fill="url(#glow-teal)"/>
+    <ellipse cx="280" cy="130" rx="100" ry="90"  fill="url(#glow-blue)"/>
+    <ellipse cx="130" cy="300" rx="90"  ry="80"  fill="url(#glow-teal)"/>
+
+    <!-- Outer ring edges -->
+    <line stroke="#1A3050" stroke-width="0.5" x1="200" y1="50"  x2="340" y2="140"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="340" y1="140" x2="320" y2="300"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="320" y1="300" x2="180" y2="370"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="180" y1="370" x2="60"  y2="290"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="60"  y1="290" x2="80"  y2="130"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="80"  y1="130" x2="200" y2="50"/>
+
+    <!-- Spoke edges to center -->
+    <line stroke="#1A3050" stroke-width="0.5" x1="200" y1="50"  x2="200" y2="200"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="340" y1="140" x2="200" y2="200"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="320" y1="300" x2="200" y2="200"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="180" y1="370" x2="200" y2="200"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="60"  y1="290" x2="200" y2="200"/>
+    <line stroke="#1A3050" stroke-width="0.5" x1="80"  y1="130" x2="200" y2="200"/>
+
+    <!-- Inner secondary edges -->
+    <line stroke="#1A3050" stroke-width="0.5" opacity="0.4" x1="270" y1="170" x2="200" y2="200"/>
+    <line stroke="#1A3050" stroke-width="0.5" opacity="0.4" x1="130" y1="235" x2="200" y2="200"/>
+
+    <!-- Outer nodes -->
+    <circle cx="200" cy="50"  r="18" fill="#0D1A30" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="200" cy="50"  r="5"  fill="#00C48C" opacity="0.9"/>
+    <circle cx="200" cy="50"  r="11" fill="none" stroke="#00C48C" stroke-width="0.5" opacity="0.35"/>
+
+    <circle cx="340" cy="140" r="14" fill="#0D1A30" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="340" cy="140" r="4"  fill="#4A8FD4" opacity="0.85"/>
+    <circle cx="340" cy="140" r="9"  fill="none" stroke="#4A8FD4" stroke-width="0.5" opacity="0.3"/>
+
+    <circle cx="320" cy="300" r="14" fill="#0D1A30" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="320" cy="300" r="4"  fill="#4A8FD4" opacity="0.7"/>
+    <circle cx="320" cy="300" r="9"  fill="none" stroke="#4A8FD4" stroke-width="0.5" opacity="0.25"/>
+
+    <circle cx="180" cy="370" r="16" fill="#0D1A30" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="180" cy="370" r="4.5" fill="#00C48C" opacity="0.75"/>
+    <circle cx="180" cy="370" r="10"  fill="none" stroke="#00C48C" stroke-width="0.5" opacity="0.3"/>
+
+    <circle cx="60"  cy="290" r="13" fill="#0D1A30" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="60"  cy="290" r="3.5" fill="#4A8FD4" opacity="0.6"/>
+
+    <circle cx="80"  cy="130" r="13" fill="#0D1A30" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="80"  cy="130" r="3.5" fill="#4A8FD4" opacity="0.6"/>
+
+    <!-- Secondary mid nodes -->
+    <circle cx="270" cy="170" r="8" fill="#0D1A30" stroke="#254570" stroke-width="0.5"/>
+    <circle cx="270" cy="170" r="2.5" fill="#00C48C" opacity="0.55"/>
+    <circle cx="130" cy="235" r="8" fill="#0D1A30" stroke="#254570" stroke-width="0.5"/>
+    <circle cx="130" cy="235" r="2.5" fill="#4A8FD4" opacity="0.45"/>
+
+    <!-- Center hub -->
+    <circle cx="200" cy="200" r="34" fill="#0A1628" stroke="#1A3050" stroke-width="0.5"/>
+    <circle cx="200" cy="200" r="26" fill="none" stroke="#00C48C" stroke-width="0.5" opacity="0.2"/>
+    <circle cx="200" cy="200" r="18" fill="#0D1A30" stroke="#00C48C" stroke-width="0.75" opacity="0.5"/>
+    <circle cx="200" cy="200" r="8"  fill="#00C48C" opacity="0.9"/>
+  </svg>
+</div>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a class="nav-logo" href="#top">
+      <div class="nav-mark">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <span class="nav-wordmark">V2V Technology Consulting</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#process">How we work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://calendly.com/kirk-n-grant/15min" class="nav-cta" target="_blank" rel="noopener">Schedule a call</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ── DATA TICKER ── -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item"><span class="ticker-num">70–90%</span><span class="ticker-desc">of digital transformations fail to meet their original objectives</span></span>
+    <span class="ticker-item"><span class="ticker-num">&lt;30%</span><span class="ticker-desc">of initiatives actually achieve the business value they were intended to deliver</span></span>
+    <span class="ticker-item"><span class="ticker-num">95%</span><span class="ticker-desc">of generative AI pilots fail to produce measurable return on investment</span></span>
+    <span class="ticker-item"><span class="ticker-num">1 in 5</span><span class="ticker-desc">enterprise programs fail outright — even with modern delivery methods in place</span></span>
+    <span class="ticker-item ticker-divider"><span class="ticker-rule"></span><span class="ticker-label">The question isn't whether to transform — it's how to be in the minority that succeeds.</span><span class="ticker-rule"></span></span>
+    <!-- duplicate for seamless loop -->
+    <span class="ticker-item"><span class="ticker-num">70–90%</span><span class="ticker-desc">of digital transformations fail to meet their original objectives</span></span>
+    <span class="ticker-item"><span class="ticker-num">&lt;30%</span><span class="ticker-desc">of initiatives actually achieve the business value they were intended to deliver</span></span>
+    <span class="ticker-item"><span class="ticker-num">95%</span><span class="ticker-desc">of generative AI pilots fail to produce measurable return on investment</span></span>
+    <span class="ticker-item"><span class="ticker-num">1 in 5</span><span class="ticker-desc">enterprise programs fail outright — even with modern delivery methods in place</span></span>
+    <span class="ticker-item ticker-divider"><span class="ticker-rule"></span><span class="ticker-label">The question isn't whether to transform — it's how to be in the minority that succeeds.</span><span class="ticker-rule"></span></span>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<div id="top">
+  <div class="hero">
+    <p class="hero-eyebrow">Program Recovery &amp; Technology Delivery</p>
+    <h1 class="hero-headline">We stabilize programs<br>before they become <em>costly </em>failures.</h1>
+    <p class="hero-sub">
+      V2V Technology Consulting brings disciplined execution back to large-scale technology initiatives — where costs are escalating, stakeholder confidence is eroding, and delivery has drifted from strategic intent.
+    </p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com/v2v-tech-consulting-proton/30min" class="btn-primary" target="_blank" rel="noopener">
+        Schedule a free precheck <span class="arrow">→</span>
+      </a>
+      <a href="#services" class="btn-secondary">
+        See how we work <span class="arrow">→</span>
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">$700M+</div>
+        <div class="stat-label">Portfolio value stabilized</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">17 yrs</div>
+        <div class="stat-label">F500 delivery leadership</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">4×</div>
+        <div class="stat-label">Managed services scaled</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── CRISIS / TRUTH ── -->
+<div class="crisis-bg">
+  <div class="crisis-inner">
+    <div class="crisis-stats">
+      <div class="crisis-stat">
+        <div class="crisis-big">70–90%</div>
+        <div class="crisis-text">of digital transformations fail to meet their original objectives</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-big">&lt;30%</div>
+        <div class="crisis-text">of initiatives actually achieve the business value they were intended to deliver</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-big">95%</div>
+        <div class="crisis-text">of generative AI pilots fail to produce measurable return on investment</div>
+      </div>
+      <div class="crisis-stat">
+        <div class="crisis-big">1 in 5</div>
+        <div class="crisis-text">enterprise programs fail outright — even with modern delivery methods in place</div>
+      </div>
+    </div>
+    <div class="crisis-copy">
+      <p class="eyebrow">The reality of technology programs</p>
+      <h2 class="section-headline">Transformation is failing at scale.</h2>
+      <p>The numbers are not improving. Organizations invest millions — sometimes hundreds of millions — only to watch programs drift: status reports disconnect from reality, costs escalate without a credible forecast, decisions slow to a halt.</p>
+      <p><strong>These are not people problems.</strong> They are structural breakdowns — gaps in SDLC compliance, misalignment between delivery and operations, and quality controls that exist on paper but not in practice.</p>
+      <p>The question is not whether to transform. <strong>It is how to be in the minority that succeeds.</strong></p>
+    </div>
+  </div>
+</div>
+
+<!-- ── SERVICES ── -->
+<div id="services">
+  <div class="section">
+    <p class="eyebrow">Services</p>
+    <h2 class="section-headline">What we do for you</h2>
+    <p class="section-sub">One flagship service, delivered with precision — for organizations where the stakes are too high for a generalist approach.</p>
+
+    <div class="service-card">
+      <div>
+        <div class="service-name">Program Turnaround&#8209;as&#8209;a&#8209;Service</div>
+        <p class="service-desc">
+          We step into complex, at-risk programs and restore alignment, predictability, and measurable value. Not as auditors. Not as advisors. As execution partners who own the outcome alongside you.
+        </p>
+        <span class="service-price">$10M – $500M engagements</span>
+        <div style="margin-top: 1rem;">
+          <a href="https://calendly.com/v2v-tech-consulting-proton/30min" class="btn-primary" target="_blank" rel="noopener" style="display:inline-flex;">
+            Schedule a free program precheck <span class="arrow">→</span>
+          </a>
+        </div>
+      </div>
+      <div>
+        <p style="font-size: 12px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-dim); margin-bottom: 0.75rem;">Warning signals we address</p>
+        <ul class="signal-list">
+          <li><span>Status reports that no longer reflect reality on the ground</span></li>
+          <li><span>Cost overruns without a credible path to forecast recovery</span></li>
+          <li><span><strong>Decision velocity</strong> collapsing across workstreams</span></li>
+          <li><span>Stakeholder confidence eroding at the executive level</span></li>
+          <li><span>SDLC and governance compliance breaking down under pressure</span></li>
+          <li><span>Business value not being realized despite sunk investment</span></li>
+          <li><span>Delivery and service operations misaligned post-launch</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PROCESS ── -->
+<hr class="section-divider">
+<div id="process">
+  <div class="section">
+    <p class="eyebrow">How we work</p>
+    <h2 class="section-headline">Diagnose. Design. Execute.</h2>
+    <p class="section-sub">Our engagement model mirrors how elite delivery organizations operate — data-first diagnostics, then a targeted intervention designed for your program's specific failure mode.</p>
+
+    <div class="process-steps">
+      <div class="process-step">
+        <div class="step-num">01 — Diagnose</div>
+        <div class="step-name">Program health check</div>
+        <p class="step-desc">A structured, data-driven assessment that surfaces where execution is breaking down — not where leadership thinks it is. We examine SDLC compliance, delivery cadence, forecast accuracy, and stakeholder alignment in parallel.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">02 — Design</div>
+        <div class="step-name">Turnaround blueprint</div>
+        <p class="step-desc">A targeted recovery plan with clear ownership, measurable milestones, and a realistic forecast. No generic frameworks. Every blueprint is built for the specific failure pattern we identified in your program.</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">03 — Execute</div>
+        <div class="step-name">Embedded leadership</div>
+        <p class="step-desc">We deliver alongside your team — not in a slide deck. We hold workstreams accountable, restore governance discipline, and maintain stakeholder confidence through every phase of recovery.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ABOUT ── -->
+<div class="about-bg" id="about">
+  <div class="about-inner">
+    <div class="about-left">
+      <p class="eyebrow">About V2V</p>
+      <h2 class="section-headline">Built by someone who has done this work.</h2>
+      <div class="about-creds">
+        <div class="cred"><div class="cred-dot"></div><span>PMP-certified program manager with MS/BS Chemical Engineering</span></div>
+        <div class="cred"><div class="cred-dot"></div><span>17+ years at Accenture serving F500 clients across pharma, chemicals, telecom, and retail</span></div>
+        <div class="cred"><div class="cred-dot"></div><span>Partner on a $700M digital portfolio rescue engagement</span></div>
+        <div class="cred"><div class="cred-dot"></div><span>Ranked #1/200 in AI-driven SDLC governance innovation</span></div>
+        <div class="cred"><div class="cred-dot"></div><span>Led Workfront-OpenAI GenAI integration for enterprise delivery</span></div>
+        <div class="cred"><div class="cred-dot"></div><span>Dual fluency: solution delivery (SDLC) and IT service management (ITIL)</span></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <p>
+        V2V was founded on a simple premise: <strong>most program failures are diagnosed as people problems when they are actually structural ones.</strong> The delivery methodology is sound on paper. The governance process was approved by leadership. The team is capable.
+      </p>
+      <p>
+        But the SDLC is not being enforced. Delivery and service operations are not aligned. Quality controls exist in documents that nobody has read since kickoff.
+      </p>
+      <p>
+        <strong>We specialize in finding these gaps — and closing them — before they become the kind of failure that ends careers and programs simultaneously.</strong>
+      </p>
+      <p>
+        Our technical toolkit spans Adobe Workfront, Microsoft Project, Azure DevOps, JIRA, AWS, and purpose-built GenAI integrations. Our engagement model is designed for the organizations where the stakes are highest and the margin for error is zero.
+      </p>
+      <p style="color: var(--text); font-style: italic; font-family: var(--serif); font-size: 1.05rem; padding-top: 0.5rem; border-top: 0.5px solid var(--border); margin-top: 0.5rem;">
+        "Transforming vision into measurable value — that is not a tagline. It is the only outcome we accept."
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- ── CTA STRIP ── -->
+<div class="cta-strip">
+  <p class="eyebrow" style="text-align:center;">Get started</p>
+  <h2 class="section-headline" style="text-align:center;">Is your program showing warning signs?</h2>
+  <p class="section-sub" style="text-align:center; margin: 0 auto 2.5rem;">
+    A 30-minute program precheck is free, confidential, and designed to tell you whether recovery is warranted — and whether we are the right fit to lead it.
+  </p>
+  <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+    <a href="https://calendly.com/v2v-tech-consulting-proton/30min" class="btn-primary" target="_blank" rel="noopener">
+      Schedule your free precheck <span class="arrow">→</span>
+    </a>
+    <a href="mailto:v2v.tech.consulting@proton.me" class="btn-secondary"> 
+      Send us a message <span class="arrow">→</span>
+    </a>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-inner">
+    <a class="footer-brand" href="#top">
+      <div class="nav-mark">
+        <span></span><span></span><span></span><span></span>
+      </div>
+      <span class="footer-name">V2V Technology Consulting</span>
+    </a>
+    <p class="footer-copy">© 2026 V2V Technology Consulting. All rights reserved.</p>
+    <ul class="footer-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="https://calendly.com/kirk-n-grant/15min" target="_blank" rel="noopener">Contact</a></li>
+    </ul>
+  </div>
+</footer>
+
+</body>
+</html>
