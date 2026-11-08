@@ -1,6 +1,6 @@
 # K-CONTEXT | Global Context Lifecycle Protocol
 
-**Version:** 1.3.0  
+**Version:** 1.4.0  
 **Date:** 2026-11-08  
 **Status:** Approved; published protocol (global bootstrap deployment pending)  
 **Scope:** All ChatGPT conversations, including standalone chats and chats within any ChatGPT Project.
@@ -78,7 +78,7 @@ kgrant-context/
         current.md
         current.json
         history/
-  standalone/
+  no-project/
     <topic-id>/
       current.md
       current.json
@@ -91,6 +91,15 @@ kgrant-context/
 ```
 
 Existing v1.0 storage paths remain valid historical sources. Do not relocate or rewrite legacy records automatically.
+
+### Unified standalone and cross-project categorization (approved 2026-11-08)
+
+- Save contexts originating from **named ChatGPT Projects** under `projects/<project-id>/<topic-id>/`.
+- Save contexts originating from conversations **outside named ChatGPT Projects** under `no-project/<topic-id>/`, preserving `current.md`, `current.json`, and immutable history.
+- Retain historical `standalone/` paths where already present. Do not migrate or overwrite them blindly; use `no-project/` for new standalone saves.
+- After either automatic eligible memory persistence or forced `savec` checkpoint, update the **derived** `topics/` directory with a topic, subtopic, descriptive title, source scope, version/date, link, and resume command. Use `context/build_topics.py` and `topics/classification-overrides.json` for deterministic categorization. Do not copy authoritative checkpoint content into taxonomy indexes.
+- Maintain the unified GitHub context index across both `projects/` and `no-project/`. Ambiguous or unmatched items belong to `other/needs-review`, never silently misclassified.
+- The Evernote note **00 | A0 | AI | CONTEXT REGISTER**, in **A2. OPERATIONS**, is a **project-only directory mirror**. Display the `projects/` hierarchy with H2/H3/H4 headings and nested linked bullets; omit `no-project/`, `topics/`, and unrelated repository files from that note. Retain its existing GUID. The GitHub indexes provide the full cross-source catalog and browsing.
 
 ## 6. Project and Topic Isolation
 
@@ -234,3 +243,4 @@ Changes affecting command semantics, repository destinations, security, approval
 
 - **2026-11-08 — v1.2.0:** User-authorized write-through Evernote synchronization after any automatic or savec memory commit, including version/date, validation, and explicit failure reporting.
 - **2026-11-08 — v1.3.0:** Approved proactive context-preservation warning when estimated usage is near or over 85%, with exactly one click to run `savec -checkpoint` and no intermediate approval.
+- **2026-11-08 — v1.4.0:** Approved no-project standalone source folder, automatically derived topics/subtopics/titles across project and standalone records, and Evernote project-only hierarchical CONTEXT REGISTER under its new title.
