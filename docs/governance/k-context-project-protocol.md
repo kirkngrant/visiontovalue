@@ -1,6 +1,6 @@
 # K-CONTEXT | Global Context Lifecycle Protocol
 
-**Version:** 1.2.0  
+**Version:** 1.3.0  
 **Date:** 2026-11-08  
 **Status:** Approved; published protocol (global bootstrap deployment pending)  
 **Scope:** All ChatGPT conversations, including standalone chats and chats within any ChatGPT Project.
@@ -142,6 +142,16 @@ The GitHub file remains authoritative. If Evernote is unavailable or its OAuth i
 
 GitHub Actions write-through may require independent Evernote OAuth credentials; connection in an AI chat does not grant credentials to GitHub runners. This rule does not authorize uploading sensitive transcript content or modifying unrelated notes.
 
+## Proactive Context Preservation Safeguard — Near or Over 85%
+
+**User-approved operating directive (2026-11-08).** During an active conversation, watch for credible signs that the usable context window is **near or over 85%** consumed, or that earlier context may be compacted, truncated, or become inaccessible. No exact percentage measurement is required or to be claimed: the ChatGPT conversational interface may not expose a context usage meter. Treat the trigger as an estimated early-warning signal.
+
+When the condition is reasonably suspected, proactively display **one concise warning and exactly one actionable control** labeled **Save extended-memory checkpoint**. The control must invoke `savec -checkpoint` with a single user click. Do not add a second choice, questionnaire, approval gate, or intermediate step. Avoid repeated warnings for the same unsaved condition.
+
+When clicked, execute the existing authorized K-CONTEXT save/checkpoint process immediately: preserve pertinent project context, decisions, verified outcomes, risks, outstanding tasks and resume references in the established GitHub repository; apply the existing Evernote synchronization rules and verify destinations. Report actual completion or a specific blocker, never claim a saved checkpoint without a verified write.
+
+This safeguard applies where the assistant has relevant instructions and can observe the conversation context. It cannot guarantee warning before automatic compaction, since no precise context-consumption telemetry or background per-turn hook is exposed to ordinary chats. Do not invent a percentage or silently downgrade the single-click action into a draft-only response.
+
 ## 8. Reload, Diff, and Resume
 
 For `savec -reload` and `savec -resume`:
@@ -223,3 +233,4 @@ Changes affecting command semantics, repository destinations, security, approval
 - **2026-10-31 — v1.1.0:** Approved global scope, bootstrap initialization, explicit private storage, project isolation, checkpoint synchronization, recovery validation, and deployment-state governance.
 
 - **2026-11-08 — v1.2.0:** User-authorized write-through Evernote synchronization after any automatic or savec memory commit, including version/date, validation, and explicit failure reporting.
+- **2026-11-08 — v1.3.0:** Approved proactive context-preservation warning when estimated usage is near or over 85%, with exactly one click to run `savec -checkpoint` and no intermediate approval.
