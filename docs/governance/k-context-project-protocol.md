@@ -1,6 +1,6 @@
 # K-CONTEXT | Global Context Lifecycle Protocol
 
-**Version:** 1.4.0  
+**Version:** 1.5.0  
 **Date:** 2026-11-08  
 **Status:** Approved; published protocol (global bootstrap deployment pending)  
 **Scope:** All ChatGPT conversations, including standalone chats and chats within any ChatGPT Project.
@@ -99,7 +99,7 @@ Existing v1.0 storage paths remain valid historical sources. Do not relocate or 
 - Retain historical `standalone/` paths where already present. Do not migrate or overwrite them blindly; use `no-project/` for new standalone saves.
 - After either automatic eligible memory persistence or forced `savec` checkpoint, update the **derived** `topics/` directory with a topic, subtopic, descriptive title, source scope, version/date, link, and resume command. Use `context/build_topics.py` and `topics/classification-overrides.json` for deterministic categorization. Do not copy authoritative checkpoint content into taxonomy indexes.
 - Maintain the unified GitHub context index across both `projects/` and `no-project/`. Ambiguous or unmatched items belong to `other/needs-review`, never silently misclassified.
-- The Evernote note **00 | A0 | AI | CONTEXT REGISTER**, in **A2. OPERATIONS**, is a **project-only directory mirror**. Display the `projects/` hierarchy with H2/H3/H4 headings and nested linked bullets; omit `no-project/`, `topics/`, and unrelated repository files from that note. Retain its existing GUID. The GitHub indexes provide the full cross-source catalog and browsing.
+- The Evernote note **00 | A0 | AI | CONTEXT REGISTER**, in **A2. OPERATIONS**, presents three top-level H1 sections: **projects/**, **no-project/**, and **topics/**. Present each section's directory, nested folders, and linked files using H2/H3/H4 headings and hierarchical indented bullets. Omit unrelated repository roots. Retain its existing GUID. The GitHub repository remains authoritative.
 
 ## 6. Project and Topic Isolation
 
@@ -145,7 +145,7 @@ If GitHub access is unavailable, provide portable local Markdown and JSON artifa
 
 ### Required GitHub-to-Evernote write-through after savec
 
-For every successfully persisted context/memory checkpoint (automatic or forced savec), use the unified K-CONTEXT register and perform an immediate companion write to the Evernote note **CONTEXT REGISTER | GitHub K-CONTEXT — Unified Memory, Checkpoints & Projects** in the user's **A2. OPERATIONS** notebook. Include the saved topic/path, GitHub commit or version, last-updated timestamp, and direct source link. Read back the Evernote note to verify the update. Automatic events use the authorized GitHub Actions Evernote integration when provisioned; in-chat savec uses the connected Evernote tools when available.
+For every successfully persisted context/memory checkpoint (automatic or forced savec), use the unified K-CONTEXT register and perform an immediate companion write to the Evernote note **00 | A0 | AI | CONTEXT REGISTER** in the user's **A2. OPERATIONS** notebook. Include the saved topic/path, GitHub commit or version, last-updated timestamp, and direct source link. Read back the Evernote note to verify the update. Automatic events use the authorized GitHub Actions Evernote integration when provisioned; in-chat savec uses the connected Evernote tools when available.
 
 The GitHub file remains authoritative. If Evernote is unavailable or its OAuth integration has not been independently authorized, preserve the GitHub commit and report **Evernote synchronization failed/pending**. Never claim synchronized completion, silently skip the Evernote write, or treat a generated update payload as proof that Evernote was modified. Retry using an idempotent commit/event ID.
 
@@ -244,3 +244,4 @@ Changes affecting command semantics, repository destinations, security, approval
 - **2026-11-08 — v1.2.0:** User-authorized write-through Evernote synchronization after any automatic or savec memory commit, including version/date, validation, and explicit failure reporting.
 - **2026-11-08 — v1.3.0:** Approved proactive context-preservation warning when estimated usage is near or over 85%, with exactly one click to run `savec -checkpoint` and no intermediate approval.
 - **2026-11-08 — v1.4.0:** Approved no-project standalone source folder, automatically derived topics/subtopics/titles across project and standalone records, and Evernote project-only hierarchical CONTEXT REGISTER under its new title.
+- **2026-11-08 — v1.5.0:** Approved the Evernote register's three H1 directory roots (projects, no-project, topics) and relocating the Olivia birthday seating record under projects/20-home.
