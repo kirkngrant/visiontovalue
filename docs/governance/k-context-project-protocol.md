@@ -1,7 +1,7 @@
 # K-CONTEXT | Global Context Lifecycle Protocol
 
-**Version:** 1.1.0  
-**Date:** 2026-10-31  
+**Version:** 1.2.0  
+**Date:** 2026-11-08  
 **Status:** Approved; published protocol (global bootstrap deployment pending)  
 **Scope:** All ChatGPT conversations, including standalone chats and chats within any ChatGPT Project.
 
@@ -134,6 +134,14 @@ If any required write or verification fails, identify which artifacts succeeded 
 
 If GitHub access is unavailable, provide portable local Markdown and JSON artifacts when possible and explicitly report that remote persistence was not completed.
 
+### Required GitHub-to-Evernote write-through after savec
+
+For every successfully persisted context/memory checkpoint (automatic or forced savec), use the unified K-CONTEXT register and perform an immediate companion write to the Evernote note **CONTEXT REGISTER | GitHub K-CONTEXT — Unified Memory, Checkpoints & Projects** in the user's **A2. OPERATIONS** notebook. Include the saved topic/path, GitHub commit or version, last-updated timestamp, and direct source link. Read back the Evernote note to verify the update. Automatic events use the authorized GitHub Actions Evernote integration when provisioned; in-chat savec uses the connected Evernote tools when available.
+
+The GitHub file remains authoritative. If Evernote is unavailable or its OAuth integration has not been independently authorized, preserve the GitHub commit and report **Evernote synchronization failed/pending**. Never claim synchronized completion, silently skip the Evernote write, or treat a generated update payload as proof that Evernote was modified. Retry using an idempotent commit/event ID.
+
+GitHub Actions write-through may require independent Evernote OAuth credentials; connection in an AI chat does not grant credentials to GitHub runners. This rule does not authorize uploading sensitive transcript content or modifying unrelated notes.
+
 ## 8. Reload, Diff, and Resume
 
 For `savec -reload` and `savec -resume`:
@@ -213,3 +221,5 @@ Changes affecting command semantics, repository destinations, security, approval
 
 - **2026-10-28 — v1.0:** Defined dash-only command grammar and project-level context lifecycle.
 - **2026-10-31 — v1.1.0:** Approved global scope, bootstrap initialization, explicit private storage, project isolation, checkpoint synchronization, recovery validation, and deployment-state governance.
+
+- **2026-11-08 — v1.2.0:** User-authorized write-through Evernote synchronization after any automatic or savec memory commit, including version/date, validation, and explicit failure reporting.
